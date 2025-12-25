@@ -1,0 +1,50 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.db
+*.opendb
+ipch/
+*.ipch
+
+# 编译目录
+x64/
+x86/
+Win32/
+[Dd]ebug/
+[Rr]elease/
+[Bb]uild/
+bin/
+obj/
+
+# 可执行文件
+*.exe
+*.dll
+*.lib
+*.exp
+*.pdb
+*.ilk
+*.obj
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+*.cmake
+CMakeUserPresets.json
+
+# 项目文件
+*.vcxproj
+*.vcxproj.user
+*.filters
+*.sln
+
+# 输出文件
+demo_curve.step
+
+# 系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
