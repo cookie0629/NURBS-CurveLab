@@ -42,7 +42,7 @@ void DemonstrateCurveCreation() {
     // 创建NURBS曲线
     auto curve = std::make_shared<NurbsCurve>();
     if (curve->CreateFromControlPoints(controlPoints, 3)) {
-        std::cout << "✓ 成功创建3次NURBS曲线\n";
+        std::cout << "成功创建3次NURBS曲线\n";
         std::cout << "  控制点数量: " << curve->GetControlPointCount() << "\n";
         std::cout << "  曲线次数: " << curve->GetDegree() << "\n";
         std::cout << "  参数范围: [" << curve->GetFirstParameter() 
@@ -59,7 +59,7 @@ void DemonstrateCurveCreation() {
         std::cout << "  中点切线: (" << tangent.X() << ", " << tangent.Y() << ", " << tangent.Z() << ")\n";
         std::cout << "  中点曲率: " << curvature << "\n";
     } else {
-        std::cout << "✗ 曲线创建失败\n";
+        std::cout << "曲线创建失败\n";
     }
     
     std::cout << "\n";
@@ -83,7 +83,7 @@ void DemonstrateSurfaceCreation() {
     // 创建NURBS曲面
     auto surface = std::make_shared<NurbsSurface>();
     if (surface->CreateFromControlPoints(controlPoints, 3, 3)) {
-        std::cout << "✓ 成功创建3x3次NURBS曲面\n";
+        std::cout << "成功创建3x3次NURBS曲面\n";
         std::cout << "  U方向控制点数: " << surface->GetUControlPointCount() << "\n";
         std::cout << "  V方向控制点数: " << surface->GetVControlPointCount() << "\n";
         std::cout << "  U方向次数: " << surface->GetUDegree() << "\n";
@@ -108,7 +108,7 @@ void DemonstrateSurfaceCreation() {
         std::cout << "  高斯曲率: " << gaussCurvature << "\n";
         std::cout << "  平均曲率: " << meanCurvature << "\n";
     } else {
-        std::cout << "✗ 曲面创建失败\n";
+        std::cout << "曲面创建失败\n";
     }
     
     std::cout << "\n";
@@ -127,7 +127,7 @@ void DemonstrateGeometryOperations() {
     
     auto curve = GeometryMath::FitCurveToPoints(points, 3, 1e-3);
     if (curve && curve->IsValid()) {
-        std::cout << "✓ 成功拟合曲线到点集\n";
+        std::cout << "成功拟合曲线到点集\n";
         
         // 计算弧长
         double arcLength = GeometryMath::CalculateArcLength(curve);
@@ -145,7 +145,7 @@ void DemonstrateGeometryOperations() {
         std::cout << "  最近点: (" << closestPoint.X() << ", " << closestPoint.Y() << ", " << closestPoint.Z() << ")\n";
         std::cout << "  参数值: " << parameter << "\n";
     } else {
-        std::cout << "✗ 曲线拟合失败\n";
+        std::cout << "曲线拟合失败\n";
     }
     
     std::cout << "\n";
@@ -173,10 +173,10 @@ void DemonstrateFileIO() {
         if (exporter.AddCurve(curve, "DemoCurve")) {
             std::string filename = "demo_curve.step";
             if (exporter.ExportToFile(filename)) {
-                std::cout << "✓ 成功导出曲线到 " << filename << "\n";
+                std::cout << "成功导出曲线到 " << filename << "\n";
                 std::cout << "  导出的曲线数量: " << exporter.GetCurveCount() << "\n";
             } else {
-                std::cout << "✗ 导出失败: " << exporter.GetLastError() << "\n";
+                std::cout << "导出失败: " << exporter.GetLastError() << "\n";
             }
         }
     }
