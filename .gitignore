@@ -1,50 +1,40 @@
-# Visual Studio
+# 构建产物
+build/
+out/
+x64/
 .vs/
+*.exe
+*.lib
+*.pdb
+*.exp
+*.obj
+*.iobj
+*.ipdb
+
+# Visual Studio 文件
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.sln
 *.suo
 *.user
-*.userosscache
-*.sln.docstates
-*.db
-*.opendb
-ipch/
-*.ipch
 
-# 编译目录
-x64/
-x86/
-Win32/
-[Dd]ebug/
-[Rr]elease/
-[Bb]uild/
-bin/
-obj/
-
-# 可执行文件
-*.exe
-*.dll
-*.lib
-*.exp
-*.pdb
-*.ilk
-*.obj
-
-# CMake
+# CMake 文件
 CMakeCache.txt
 CMakeFiles/
 cmake_install.cmake
-*.cmake
-CMakeUserPresets.json
+install_manifest.txt
 
-# 项目文件
-*.vcxproj
-*.vcxproj.user
-*.filters
-*.sln
+# 临时文件
+*.tmp
+*.temp
+*.log
 
-# 输出文件
-demo_curve.step
+# 生成的文件
+*.step
+*.iges
+*.stl
 
 # 系统文件
 .DS_Store
 Thumbs.db
-desktop.ini

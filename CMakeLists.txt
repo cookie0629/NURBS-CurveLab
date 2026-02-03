@@ -1,12 +1,12 @@
-# NURBS-CurveLab CMake配置文件
-# 支持跨平台编译的现代CMake配置
+# NURBS-CurveLab CMake配置文件（简化版）
+# 专注于NURBS曲线建模的核心功能
 
 cmake_minimum_required(VERSION 3.16)
 
 # 项目信息
 project(NURBS-CurveLab 
     VERSION 1.0.0
-    DESCRIPTION "NURBS曲线和曲面建模工具"
+    DESCRIPTION "NURBS曲线建模工具（简化版）"
     LANGUAGES CXX)
 
 # C++标准设置
@@ -44,42 +44,30 @@ message(STATUS "OpenCASCADE库目录: ${OpenCASCADE_LIBRARY_DIR}")
 include_directories(${OpenCASCADE_INCLUDE_DIR})
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/src)
 
-# 源文件列表
+# 核心源文件列表（只保留曲线相关）
 set(CORE_SOURCES
     src/core/NurbsCurve.cpp
-    src/core/NurbsSurface.cpp
     src/core/GeometryMath.cpp
-)
-
-set(IO_SOURCES
-    src/io/StepExporter.cpp
-    src/io/ModelLoader.cpp
 )
 
 set(HEADER_FILES
     src/core/NurbsCurve.h
-    src/core/NurbsSurface.h
     src/core/GeometryMath.h
-    src/io/StepExporter.h
-    src/io/ModelLoader.h
 )
 
 # 创建核心库
 add_library(NurbsCore STATIC 
     ${CORE_SOURCES} 
-    ${IO_SOURCES}
     ${HEADER_FILES}
 )
 
 # 设置库目录
 link_directories(${OpenCASCADE_LIBRARY_DIR})
 
-# 手动链接必要的OpenCASCADE库
+# 链接必要的OpenCASCADE库（简化版，只保留曲线相关）
 target_link_libraries(NurbsCore 
     TKernel TKMath TKG2d TKG3d TKGeomBase TKGeomAlgo
-    TKBRep TKPrim TKTopAlgo TKBO TKBool
-    TKSTEP TKSTEPBase TKSTEPAttr TKIGES
-    TKShHealing TKFillet TKOffset TKMesh TKHLR TKSTL TKXSBase
+    TKBRep TKPrim TKTopAlgo
 )
 
 # 主程序
@@ -89,19 +77,14 @@ add_executable(NURBS-CurveLab
 
 target_link_libraries(NURBS-CurveLab NurbsCore)
 
-# 示例程序
+# 基础曲线示例程序
 add_executable(BasicCurveExample 
     examples/basic_curve_example.cpp
 )
 target_link_libraries(BasicCurveExample NurbsCore)
 
-add_executable(SurfaceModelingExample 
-    examples/surface_modeling_example.cpp
-)
-target_link_libraries(SurfaceModelingExample NurbsCore)
-
 # 设置输出目录
-set_target_properties(NURBS-CurveLab BasicCurveExample SurfaceModelingExample
+set_target_properties(NURBS-CurveLab BasicCurveExample
     PROPERTIES
     RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin
     LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib
@@ -115,4 +98,5 @@ message(STATUS "  版本: ${PROJECT_VERSION}")
 message(STATUS "  编译器: ${CMAKE_CXX_COMPILER_ID} ${CMAKE_CXX_COMPILER_VERSION}")
 message(STATUS "  C++标准: ${CMAKE_CXX_STANDARD}")
 message(STATUS "  构建类型: ${CMAKE_BUILD_TYPE}")
+message(STATUS "  功能: 专注于NURBS曲线建模")
 message(STATUS "")
